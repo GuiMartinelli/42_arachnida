@@ -26,7 +26,7 @@ def download_page(url):
 		html = requests.get(url, headers=headers, timeout=10)
 		return html
 	except:
-		print("Could not download data from " + url)
+		print(f"Could not download data from {url}")
 		return SyntaxError()
 
 
@@ -39,10 +39,10 @@ def download_images(page_html, path):
 		if img_src and image_extensions.match(img_src):
 			image_name = os.path.basename(img_src)
 			try:
-				print("\tDownloading img" + image_name + " from " + img_src)
 				urlretrieve(img_src, (path + image_name))
+				print(f"\tImage {image_name} from {img_src} downloaded")
 			except:
-				print("\tCould not download img" + image_name + " from " + img_src)
+				print(f"\tCould not download img {image_name} from {img_src}")
 				continue
 	print("Finished downloading images from page")
 
@@ -60,7 +60,7 @@ def extract_inner_urls(page_html):
 
 
 def extract_images(url, args, layer):
-	print("Extracting images from: " + url)
+	print(f"Extracting images from: {url}")
 	try:
 		response = download_page(url)
 		if response.status_code == 200:
@@ -74,7 +74,7 @@ def extract_images(url, args, layer):
 			else:
 				return
 		else:
-			print("Error Downloading Page: " + str(response.status_code) + " " + response.reason)
+			print(f"Error Downloading Page: {str(response.status_code)} {response.reason}")
 	except:
 		return
 
