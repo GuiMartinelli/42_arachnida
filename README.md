@@ -3,7 +3,7 @@
 Introductory project to web scraping and metadata. I also took the opportunity to learn more about Python programming
 <br/><br/>
 
-## WHAT IS WEB SCRAPING?
+### WHAT IS WEB SCRAPING?
 Web scraping is the process of automatically extracting data from websites, and it enables data collection from websites for use in research, market analysis, data mining, or content aggregation, but it must be done responsibly.
 
 ### WHAT IS METADATA?
