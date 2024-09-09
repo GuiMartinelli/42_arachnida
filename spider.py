@@ -14,11 +14,11 @@ def program_args():
 	return parser.parse_args()
 
 
-def create_path_dir(path):
+def create_path_dir(path: str):
 	Path(path).mkdir(parents=True, exist_ok=True)
 
 
-def download_page(url):
+def download_page(url: str):
 	headers = {
 		"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
 	}
@@ -30,16 +30,17 @@ def download_page(url):
 		return SyntaxError()
 
 
-def download_images(page_html, path):
+def download_images(page_html: str, path: str):
 	soup = BeautifulSoup(page_html, 'html.parser')
 	image_extensions = re.compile(r'.*\.(png|jpeg|jpg|gif|bmp)$')
+	path = path if path.endswith('/') else path + ('/')
 
 	for img in soup.find_all('img'):
 		img_src = img.get('src')
 		if img_src and image_extensions.match(img_src):
 			image_name = os.path.basename(img_src)
 			try:
-				urlretrieve(img_src, (path + image_name))
+				urlretrieve(img_src.lstrip('/'), (path + image_name))
 				print(f"\tImage {image_name} from {img_src} downloaded")
 			except:
 				print(f"\tCould not download img {image_name} from {img_src}")
@@ -47,7 +48,7 @@ def download_images(page_html, path):
 	print("Finished downloading images from page")
 
 
-def extract_inner_urls(page_html):
+def extract_inner_urls(page_html: str):
 	soup = BeautifulSoup(page_html, 'html.parser')
 	image_extensions = re.compile(r'.*\.(png|jpeg|jpg|gif|bmp)$')
 
@@ -59,7 +60,7 @@ def extract_inner_urls(page_html):
 	return links
 
 
-def extract_images(url, args, layer):
+def extract_images(url: str, args: argparse.Namespace, layer: int):
 	print(f"Extracting images from: {url}")
 	try:
 		response = download_page(url)

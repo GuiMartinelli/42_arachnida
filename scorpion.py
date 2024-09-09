@@ -9,23 +9,24 @@ def program_args():
 	return parser.parse_args()
 
 
-def open_image(path):
+def open_image(path: str):
 	image = Image.open(path)
 	return image
 
 
-def get_basic_data(image):
+def get_basic_data(image: str):
 	print(f"\tCreation date: {time.ctime(os.path.getctime(image))}")
 	print(f"\tModification date: {time.ctime(os.path.getmtime(image))}")
 	print(f"\tSize file: {(os.path.getsize(image))}")
 
 
-def print_info(info):
+def print_info(info: dict):
 	for key, value in info.items():
 		if key != 'exif':
 			print(f"\t{key}: {value}")
 
-def get_metadata(image):
+
+def get_metadata(image: Image):
 	print_info(image.info)
 	exif_data = image._getexif()
 	if exif_data is None:
