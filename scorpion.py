@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    scorpion.py                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/18 14:30:11 by guferrei          #+#    #+#              #
+#    Updated: 2025/02/18 14:30:13 by guferrei         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import argparse, os.path, time
 from PIL import Image
 from PIL.ExifTags import TAGS

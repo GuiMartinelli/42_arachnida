@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    spider.py                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/02/18 14:30:18 by guferrei          #+#    #+#              #
+#    Updated: 2025/02/18 14:30:20 by guferrei         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 import argparse, requests, os, re
 from pathlib import Path
 from urllib.request import urlretrieve
